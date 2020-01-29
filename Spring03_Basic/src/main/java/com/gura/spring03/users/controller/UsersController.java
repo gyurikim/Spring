@@ -61,7 +61,10 @@ public class UsersController {
 		//리턴해준다
 		return mView;
 	}
-	
+	/*
+	 *@ModelAttribute 어노테이션과 함께 Dto를 메소드의 인자로 선언하면 전송되는 파라미터가 자동 추출되어서 Dto 객체에 담겨서 인자로 전달된다.
+	 *단, 전송되는 파라미터면과 Dto의 필드명이 같아야한다 
+	 */
 	@RequestMapping("/users/login3")
 	public ModelAndView login3(UsersDto dto,HttpSession session,ModelAndView mView) {
 		//유효한 정보인지 확인여부
