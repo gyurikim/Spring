@@ -12,6 +12,7 @@
 	<p>어쩌구...저쩌구...</p>
 	<ul>
 		<li><a href="fortune.do">오늘의 운세보기</a></li>
+		<li><a href="person.do">오늘의 인물보기</a></li>
 	</ul>
 	<h2>공지사항</h2>
 	<ul>
