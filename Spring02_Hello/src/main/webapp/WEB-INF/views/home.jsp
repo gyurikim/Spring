@@ -10,7 +10,9 @@
 <body>
 	<h1>인덱스 페이지 입니다</h1>
 	<p>어쩌구...저쩌구...</p>
-	
+	<ul>
+		<li><a href="fortune.do">오늘의 운세보기</a></li>
+	</ul>
 	<h2>공지사항</h2>
 	<ul>
 		<c:forEach var="tmp" items="${notice }">
