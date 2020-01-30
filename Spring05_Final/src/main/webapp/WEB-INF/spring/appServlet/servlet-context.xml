@@ -50,9 +50,7 @@
 			ref="sessionFactory"/>
 	</beans:bean>
 	<!-- 
-		>>	class SqlSessionTemplate implement SqlSession{
-		
-			}
+		>>	*중요*  class SqlSessionTemplate implement SqlSession{	}
 		위의 설정을 java code로 환산하면 
 			> 변수에 담기지 않았으므로 생성만 되어있는 상태다.
 		new SqlSession Template(sessionFactory);

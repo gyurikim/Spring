@@ -12,7 +12,7 @@
 	<div class="container">
 		<h1>인덱스 페이지 입니다</h1>
 		<ul>
-			<li><a href="member.list.do">회원 목록 보기(member table)</a></li>
+			<li><a href="member/list.do">회원 목록 보기(member table)</a></li>
 		</ul>
 		<h2>공지사항</h2>
 		<ul>
