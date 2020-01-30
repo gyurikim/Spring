@@ -16,7 +16,7 @@ public class PenAspect {
 		System.out.println("Pen을 준비해요~!");
 	}
 	@After("execution(void write*())")
-	public void finish() {
+	public void end() {
 		System.out.println("Pen을 닫아요~!");
 		System.out.println("");
 	}
