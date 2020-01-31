@@ -3,13 +3,25 @@
 <mapper namespace="member">
 					<!-- resultType 이전에 dto를 new 해서 list 에 add 해주는 과정을 알아서 처리해준다 -->
 	<select id="getList" resultType="com.gura.spring05.member.dto.MemberDto">
-		select num,name,addr
+		select num,name,addr  		<!-- 작성한 칼럼명과 Dto의 필드명이 일치해야 Dto에 넣을수있다 -->
 		from member
 		order by num asc
 	</select>
-					<!-- parameterType은 하나의 값만 바인딩 할수있다. 여러개의 값을 바인딩 하고 싶다면 dto에 담아서 바인딩을 하면된다. -->
+	
+					<!-- parameterType은 하나의 값만! 바인딩 할수있다. 여러개의 값을 바인딩 하고 싶다면 dto에 담아서 바인딩을 하면된다. -->
+					<!-- jsp에서 ${}의 역할 = xml에서#{}와 같다 -->
 	<delete id="delete" parameterType="int">
 		delete from member
 		where num=#{num}
 	</delete>
+	
+	
+	<insert id="insert" parameterType="com.gura.spring05.member.dto.MemberDto">
+		insert into member
+		(num,name,addr)			<!-- 마이바티스에서 #{}은 dto.getName()을 알아서 리턴해줘서 name 자리에  넣어준다 -->
+		values(member_seq.nextval,#{name},#{addr})
+	</insert>
+	
+	
+	
 </mapper>
