@@ -19,7 +19,6 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public List<MemberDto> getList() {
 		//return session.selectList("member.getList");
-
 		List<MemberDto> list=session.selectList("member.getList");
 		return list;
 	}
@@ -27,7 +26,6 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public void delete(int num) {
 		session.delete("member.delete",num);
-		
 	}
 
 	@Override
@@ -40,9 +38,11 @@ public class MemberDaoImpl implements MemberDao{
 		MemberDto dto=session.selectOne("member.getData", num);
 		return dto;
 	}
-	
+
 	@Override
 	public void update(MemberDto dto) {
 		session.update("member.update", dto);
 	}
+	
+	
 }
