@@ -22,6 +22,18 @@
 		values(member_seq.nextval,#{name},#{addr})
 	</insert>
 	
+	<!-- 칼럼이 어러개라면 result type은 dto를 사용해서 받아주어야하지만  
+		 칼럼이 여러개가 아니라면 result type은 int또는 string 으로 지정할수 있다. -->
+	<select id="getData" parameterType="int" resultType="com.gura.spring05.member.dto.MemberDto">
+		select num,name,addr
+		from member
+		where num=#{num}
+	</select>
 	
 	
+	<update id="update" parameterType="com.gura.spring05.member.dto.MemberDto">
+		update member 
+		set name=#{name},addr=#{addr}
+		where num=#{num}
+	</update>
 </mapper>

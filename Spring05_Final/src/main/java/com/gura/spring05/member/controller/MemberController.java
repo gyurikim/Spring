@@ -54,7 +54,6 @@ public class MemberController {
 	 * 폼 전송되는 파라미터가 자동으로 MemberDto 객체에 setter 메소드를 통해서 들어가고, 그 객체가 메소드의 인자로 전달된다
 	 * 단 파라미터명과 Dto의 필드명이 일치해야된다
 	 */
-	
 	//회원정보 추가요청하는 메소드
 	@RequestMapping("/member/insert")
 	public ModelAndView insert(@ModelAttribute ("dto") MemberDto dto,ModelAndView mView) {
@@ -68,6 +67,28 @@ public class MemberController {
 		mView.setViewName("member/insert");
 		return mView;
 	}
+	
+	//회원정보를 수정하는 양식을 요청하는 메소드
+	@RequestMapping("/member/updateform")
+	public ModelAndView updateform(ModelAndView mView,@RequestParam int num) {
+		//수정할 회원의 정보를 얻어와서
+		MemberDto dto= dao.getData(num);
+		//"dto"라는 키값으로 request 영역에 담기도 하고
+		mView.addObject("dto",dto);
+		//view page로 포워드 이동해서 수정할 회원의 정보를 출력해 준다
+		mView.setViewName("member/updateform");
+		return mView;
+	}
+
+	//회원정보 수정을요청하는 메소드
+	@RequestMapping("/member/update")
+	public ModelAndView update(@ModelAttribute MemberDto dto,ModelAndView mView) {
+		dao.update(dto);
+		mView.addObject("dto",dto);
+		mView.setViewName("member/update");
+		return mView;
+	}
+	
 }
 
 

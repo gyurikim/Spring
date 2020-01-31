@@ -17,6 +17,7 @@
 			<p>정보가 추가를 실패하였습니다</p>
 		</c:otherwise>
 	</c:choose>
+	<button><a href="list.jsp">목록보러가기</a></button>
 	</div>
 </body>
 </html>
