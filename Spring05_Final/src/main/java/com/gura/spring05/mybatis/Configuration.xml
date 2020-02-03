@@ -11,5 +11,6 @@
 	<!-- mapper설정 -->
 	<mappers>
 		<mapper resource="com/gura/spring05/mybatis/MemberMapper.xml"/>
+		<mapper resource="com/gura/spring05/mybatis/UsersMapper.xml"/>
 	</mappers>  
 </configuration>
