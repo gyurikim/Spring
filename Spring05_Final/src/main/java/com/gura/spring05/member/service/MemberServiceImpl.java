@@ -22,6 +22,13 @@ public class MemberServiceImpl implements MemberService{
 		mView.addObject("list", list);
 	}
 
+	//인자로 전달되는 새로운 회원정보를 DB에 저장하는 비즈니스 로직 처리
+	@Override
+	public void addMember(MemberDto dto) {
+		dao.insert(dto);
+		
+	}
+
 }
 
 
