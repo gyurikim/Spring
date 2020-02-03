@@ -9,7 +9,7 @@
 	
 	<insert id="insert" parameterType="com.gura.food.dto.FoodDto">
 		insert into food
-		(num,menu,loc)			<!-- 마이바티스에서 #{}은 dto.getName()을 알아서 리턴해줘서 name 자리에  넣어준다 -->
+		(num,menu,loc)			<!-- 이전에 사용했던 ? 대신에 마이바티스에서는 #{}은 dto.getName()을 알아서 리턴해줘서 name 자리에  넣어준다 -->
 		values(food_seq.nextval,#{menu},#{loc})
 	</insert>	
 	

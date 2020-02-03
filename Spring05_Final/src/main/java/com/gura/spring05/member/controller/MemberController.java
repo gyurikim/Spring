@@ -11,19 +11,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.spring05.member.dao.MemberDao;
 import com.gura.spring05.member.dto.MemberDto;
+import com.gura.spring05.member.service.MemberService;
 
 @Controller
 public class MemberController {
 	//의존 객체 주입받기(DI)
 	@Autowired	//의존객체 주입을 받지않으면 널포인트이셉션이 발생하므로 까먹지 않게 주의한다!!!
 	private MemberDao dao;	//MemberDaoImpl로 변수 타입을 지정해줘도 오류없이 작동이 가능하다
+	@Autowired
+	private MemberService service;
 	
 	//회원 목록 보기 요청을 처리(/member/list.do)을 할 컨트롤러의 메소드
 	@RequestMapping("/member/list")
 	public ModelAndView list(ModelAndView mView) {
-		//회원 목록을 얻어오려면?
-		List<MemberDto> list=dao.getList();
-		mView.addObject("list",list);
+		//MemberServiceImpl객체를 이용해서 비즈니스 로직 처리
+		service.getList(mView);
+		//view page정보를 담고 
 		mView.setViewName("member/list");
 		/*
 		 * 아닛! 스프링이 AI도 아니고 어떻게 member라는 mapper를 찾아가느냐!!!!
@@ -31,7 +34,7 @@ public class MemberController {
 		 * 아니! 이 문서에서 Mapper를 설정해줫잖아!!
 		 * 이러한 이유때문에 MemberMapper를 찾아갈수 있었구나아~
 		 */
-		return mView;
+		return mView;// Model과 view page 정보가 담긴 객체를 리턴해준다.
 	}
 	
 	//회원 정보 삭제 요청 처리 메소드
