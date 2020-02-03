@@ -17,8 +17,6 @@ import com.gura.spring05.member.service.MemberService;
 public class MemberController {
 	//의존 객체 주입받기(DI)
 	@Autowired	//의존객체 주입을 받지않으면 널포인트이셉션이 발생하므로 까먹지 않게 주의한다!!!
-	private MemberDao dao;	//MemberDaoImpl로 변수 타입을 지정해줘도 오류없이 작동이 가능하다
-	@Autowired
 	private MemberService service;
 	
 	//회원 목록 보기 요청을 처리(/member/list.do)을 할 컨트롤러의 메소드
@@ -41,7 +39,7 @@ public class MemberController {
 	@RequestMapping("/member/delete")
 	public String delete(@RequestParam int num) {
 		//MemberDao객체를 이용해서 회원정보 삭제
-		dao.delete(num);
+		service.deleteMember(num);
 		return "redirect:/member/list.do";
 	}
 	
@@ -75,10 +73,8 @@ public class MemberController {
 	//회원정보를 수정하는 양식을 요청하는 메소드
 	@RequestMapping("/member/updateform")
 	public ModelAndView updateform(ModelAndView mView,@RequestParam int num) {
-		//수정할 회원의 정보를 얻어와서
-		MemberDto dto= dao.getData(num);
-		//"dto"라는 키값으로 request 영역에 담기도 하고
-		mView.addObject("dto",dto);
+		//ModelAndView 객체에 회원정보가 담기도록 서비스의 메소드 호출
+		service.getMember(mView, num);
 		//view page로 포워드 이동해서 수정할 회원의 정보를 출력해 준다
 		mView.setViewName("member/updateform");
 		return mView;
@@ -87,8 +83,8 @@ public class MemberController {
 	//회원정보 수정을요청하는 메소드
 	@RequestMapping("/member/update")
 	public ModelAndView update(@ModelAttribute MemberDto dto,ModelAndView mView) {
-		dao.update(dto);
-		mView.addObject("dto",dto);
+		//회원정보가 수정 되도록 서비스의 메소드 호출
+		service.updateMember(dto);
 		mView.setViewName("member/update");
 		return mView;
 	}
