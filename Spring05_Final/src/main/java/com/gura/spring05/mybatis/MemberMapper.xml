@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 					<!-- resultType 이전에 dto를 new 해서 list 에 add 해주는 과정을 알아서 처리해준다 -->
-	<select id="getList" resultType="com.gura.spring05.member.dto.MemberDto">
+	<select id="getList" resultType="memberDto">
 		select num,name,addr  		<!-- 작성한 칼럼명과 Dto의 필드명이 일치해야 Dto에 넣을수있다 -->
 		from member
 		order by num asc
@@ -16,7 +16,7 @@
 	</delete>
 	
 	
-	<insert id="insert" parameterType="com.gura.spring05.member.dto.MemberDto">
+	<insert id="insert" parameterType="memberDto">
 		insert into member
 		(num,name,addr)			<!-- 마이바티스에서 #{}은 dto.getName()을 알아서 리턴해줘서 name 자리에  넣어준다 -->
 		values(member_seq.nextval,#{name},#{addr})
@@ -24,14 +24,14 @@
 	
 	<!-- 칼럼이 어러개라면 result type은 dto를 사용해서 받아주어야하지만  
 		 칼럼이 여러개가 아니라면 result type은 int또는 string 으로 지정할수 있다. -->
-	<select id="getData" parameterType="int" resultType="com.gura.spring05.member.dto.MemberDto">
+	<select id="getData" parameterType="int" resultType="memberDto">
 		select num,name,addr
 		from member
 		where num=#{num}
 	</select>
 	
 	
-	<update id="update" parameterType="com.gura.spring05.member.dto.MemberDto">
+	<update id="update" parameterType="memberDto">
 		update member 
 		set name=#{name},addr=#{addr}
 		where num=#{num}

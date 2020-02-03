@@ -11,17 +11,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.food.dao.FoodDao;
 import com.gura.food.dto.FoodDto;
+import com.gura.food.service.FoodService;
 
 @Controller
 public class FoodController {
 	//의존객체 주입받기
 	@Autowired
-	private FoodDao dao;
+	private FoodService service;
 	
 	@RequestMapping("/foods/list")
 	public ModelAndView list(ModelAndView mView) {
-		List<FoodDto> list=dao.getList();
-		mView.addObject("list",list);
+		service.getList(mView);
 		mView.setViewName("foods/list");
 		return mView;
 	}
@@ -33,23 +33,21 @@ public class FoodController {
 	
 	@RequestMapping("/foods/insert")
 	public ModelAndView insert(@ModelAttribute ("dto") FoodDto dto,ModelAndView mView) {
-		dao.insert(dto);
+		service.addFood(dto);
 		mView.setViewName("foods/insert");
 		return mView;
 	}
 	
 	@RequestMapping("/foods/delete")
 	public String delete(@RequestParam int num) {
-		dao.delete(num);
+		service.deleteFood(num);
 		return "redirect:/foods/list.do";
 	}
 	
 	@RequestMapping("/foods/updateform")
 	public ModelAndView updateform(ModelAndView mView,@RequestParam int num) {
 		//수정할 회원의 정보를 얻어와서
-		FoodDto dto= dao.getData(num);
-		//"dto"라는 키값으로 request 영역에 담기도 하고
-		mView.addObject("dto",dto);
+		service.getFood(mView, num);
 		//view page로 포워드 이동해서 수정할 회원의 정보를 출력해 준다
 		mView.setViewName("foods/updateform");
 		return mView;
@@ -58,8 +56,7 @@ public class FoodController {
 	//회원정보 수정을요청하는 메소드
 	@RequestMapping("/foods/update")
 	public ModelAndView update(@ModelAttribute FoodDto dto,ModelAndView mView) {
-		dao.update(dto);
-		mView.addObject("dto",dto);
+		service.updateFood(mView, dto);
 		mView.setViewName("foods/update");
 		return mView;
 	}
