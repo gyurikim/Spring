@@ -6,6 +6,7 @@
 	<!-- 자주 사용하는 type의 별칭 지정하기 -->
 	<typeAliases>
 		<typeAlias type="com.gura.spring05.member.dto.MemberDto" alias="memberDto"/>
+		<typeAlias type="com.gura.spring05.users.dto.UsersDto" alias="usersDto"/>
 	</typeAliases>
 	
 	<!-- mapper설정 -->
