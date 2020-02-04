@@ -20,14 +20,32 @@
 	 </select>
 	 
 	 <select id="getData" parameterType="String" resultType="usersDto">
-	 	select id,email,regdate,profile
+	 	select id,pwd,email,regdate,profile
 	 	from users
 	 	where id=#{id}
 	 </select>
 	
+	<select id="getProfile" parameterType="String" resultType="String">
+	 	select profile
+	 	from users
+	 	where id=#{id}
+	 </select>
+	 
 	<update id="updateProfile" parameterType="usersDto">
 		update users
 		set profile=#{profile}
 		where id=#{id}
 	</update>
+	
+	<update id="updatePwd" parameterType="usersDto">
+		update users
+		set pwd=#{pwd}
+		where id=#{id}
+	</update>
 </mapper>
+
+
+
+
+
+

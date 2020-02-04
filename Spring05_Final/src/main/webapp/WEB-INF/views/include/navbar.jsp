@@ -11,6 +11,7 @@
 	//로그인된 아이디 읽어와 보기
 //	String id=(String)session.getAttribute("id");
 %>   
+
  
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -44,6 +45,7 @@
 				</c:when>
 				<c:otherwise>
 					<p class="navbar-text pull-right">
+						<img src="${pageContext.request.contextPath }${profile}" alt="" style="width:50px; height:50px; border-radius:50%;" />
 						<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.do">${id }</a></strong>
 						<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a> 
 					</p>

@@ -7,5 +7,7 @@ public interface UsersDao {
 	public void insert(UsersDto dto);
 	public String getPwdHash(String id);
 	public UsersDto getData(String id);
+	public String getProfile(String id);
 	public void updateProfile(UsersDto dto);
+	public void updatePwd(UsersDto dto);
 }

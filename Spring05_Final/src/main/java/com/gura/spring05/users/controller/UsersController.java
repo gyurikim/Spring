@@ -153,15 +153,44 @@ public class UsersController {
 	//ajax 파일 업로드 처리, JSON문자열을 리턴해주어야 한다
 	@ResponseBody
 	@RequestMapping(value="/users/profile_upload")
-	public Map<String, Object> profileUpload(HttpServletRequest request,@RequestParam MultipartFile profileImage){
+	public Map<String, Object> profileUpload(HttpServletRequest request,@RequestParam MultipartFile profileImage,HttpSession sessoion,UsersDto dto){
 		String path=service.saveProfileImage(request, profileImage);
 		/*
 		 * {"savedPath":"upload/xxx.jpg"}형식의 JSON 문자열을 리턴해주도록 Map 객체를 구성해서 리턴해준다
 		 */
 		Map<String,Object> map=new HashMap<>();
 		map.put("savedPath", path);
+		
 		return map;
 	}
+	
+	//비밀번호 수정하기 폼 요청 처리
+	@RequestMapping("/users/pwd_updateform")
+	public ModelAndView authPwdForm(HttpServletRequest request, ModelAndView mView) {
+		mView.setViewName("users/pwd_updateform");
+		return mView;
+	}
+	
+	//비밀번호 수정 반영 요청 처리
+	@RequestMapping("/users/pwd_update")
+	public ModelAndView authPwdUpdate(HttpServletRequest request, ModelAndView mView) {
+		//기존비밀번호
+		String pwd=request.getParameter("pwd");
+		//새 비밀번호
+		String newPwd=request.getParameter("newPwd");
+		//로그인된 아이디
+		String id= (String) request.getSession().getAttribute("id");
+		//위의 3가지 정보를 usersDto 객체에 담고
+		UsersDto dto=new UsersDto();
+		dto.setPwd(pwd);
+		dto.setNewPwd(newPwd);
+		dto.setId(id);
+		//서비스에 전달
+		service.updatePassword(dto, mView);
+		mView.setViewName("users/pwd_update");
+		return mView;
+	}
+	
 }
 
 
