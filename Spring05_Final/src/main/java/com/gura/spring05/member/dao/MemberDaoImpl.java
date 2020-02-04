@@ -43,6 +43,7 @@ public class MemberDaoImpl implements MemberDao{
 	public void update(MemberDto dto) {
 		session.update("member.update", dto);
 	}
+
 	
 	
 }
