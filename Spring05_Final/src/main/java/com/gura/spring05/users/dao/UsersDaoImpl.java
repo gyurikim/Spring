@@ -26,7 +26,6 @@ public class UsersDaoImpl implements UsersDao{
 	@Override
 	public void insert(UsersDto dto) {
 		session.insert("users.insert",dto);
-		
 	}
 
 	@Override
@@ -36,6 +35,11 @@ public class UsersDaoImpl implements UsersDao{
 		String savedPwd=session.selectOne("users.getPwdHash",inputId);
 		//select된 비밀번호를 리턴해준다
 		return savedPwd;
+	}
+
+	@Override
+	public UsersDto getData(String id) {
+		return session.selectOne("users.getData",id);
 	}
 
 }

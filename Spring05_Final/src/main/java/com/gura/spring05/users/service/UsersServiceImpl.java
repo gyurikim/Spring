@@ -54,4 +54,10 @@ public class UsersServiceImpl implements UsersService{
 			session.setAttribute("id", dto.getId());
 		}
 	}
+
+	@Override
+	public void showInfo(String id, ModelAndView mView) {
+		UsersDto dto= dao.getData(id);
+		mView.addObject("dto", dto);		
+	}
 }
