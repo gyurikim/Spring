@@ -2,6 +2,8 @@ package com.gura.food.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,5 +44,14 @@ public class FoodServiceImpl implements FoodService{
 		dao.update(dto);
 		mView.addObject("dto", dto);
 	}
+
+	@Override
+	public void getLocList(ModelAndView mView,FoodDto dto) {
+		List<FoodDto> list2=dao.locGetList(dto.getLoc());
+		mView.addObject("list2", list2);
+		
+	}
+
+	
 
 }

@@ -10,4 +10,5 @@ public interface FoodDao{
 	public void delete(int num);
 	public FoodDto getData(int num);
 	public void update(FoodDto dto);
+	public List<FoodDto> locGetList(String loc);
 }	

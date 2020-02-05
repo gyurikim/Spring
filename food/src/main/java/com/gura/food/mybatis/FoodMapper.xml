@@ -30,4 +30,11 @@
 		set menu=#{menu},loc=#{loc}
 		where num=#{num}
 	</update>
+	
+	<select id="locGetList" parameterType="String" resultType="com.gura.food.dto.FoodDto">
+		select num,menu,loc
+		from food
+		where loc=#{loc}
+		order by num asc
+	</select>
 </mapper>

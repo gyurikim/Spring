@@ -16,7 +16,13 @@
 			</div>
 			<div>
 				<label for="loc">맛집 위치</label>
-				<input type="text" id="loc" name="loc" />
+				<select name="loc" id="loc">
+		            <option value="">선택</option>
+		            <option value="서울">서울</option>
+		            <option value="경기">경기</option>
+		            <option value="부산">부산</option>
+		            <option value="제주">제주</option>
+		        </select>
 			</div>
 			<button type="submit"> 리스트 추가</button>
 			<button type="reset"> 취소</button>

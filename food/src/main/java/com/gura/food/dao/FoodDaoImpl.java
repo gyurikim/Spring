@@ -42,5 +42,11 @@ public class FoodDaoImpl implements FoodDao{
 		session.update("food.update", dto);
 		
 	}
+
+	@Override
+	public List<FoodDto> locGetList(String loc) {
+		List<FoodDto> list=session.selectList("food.locGetList",loc);
+		return list;
+	}
 	
 }

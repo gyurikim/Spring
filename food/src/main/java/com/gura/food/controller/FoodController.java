@@ -60,6 +60,14 @@ public class FoodController {
 		mView.setViewName("foods/update");
 		return mView;
 	}
+	
+	@RequestMapping("/foods/loc")
+	public ModelAndView locList(ModelAndView mView,@ModelAttribute FoodDto dto) {
+		service.getLocList(mView, dto);
+		mView.setViewName("foods/locList?loc=${loc}");
+		return mView;
+	}
+	
 }
 
 
