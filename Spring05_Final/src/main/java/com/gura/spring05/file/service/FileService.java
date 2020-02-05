@@ -1,5 +1,9 @@
 package com.gura.spring05.file.service;
 
-public interface FileService {
+import javax.servlet.http.HttpServletRequest;
 
+public interface FileService {
+	public void list(HttpServletRequest request);
+	
+	
 }
