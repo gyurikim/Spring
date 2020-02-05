@@ -48,7 +48,7 @@ public class FileController{
 		//다운로드 횟수 증기시키도록
 		service.addDownCount(num);
 		//view page에 담아서
-		mView.addObject("file/download");
+		mView.setViewName("fileDownView");//뷰가 빈으로 만들어져있으면 0순위로 뷰를 찾아가지만 존재하지 않으면 알아서 jsp페이지를 찾아간다
 		return mView;//리턴한다
 	}
 }
