@@ -1,5 +1,8 @@
 package com.gura.spring05.file.controller;
 
+import java.io.File;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +54,14 @@ public class FileController{
 		mView.setViewName("fileDownView");//뷰가 빈으로 만들어져있으면 0순위로 뷰를 찾아가지만 존재하지 않으면 알아서 jsp페이지를 찾아간다
 		return mView;//리턴한다
 	}
+	
+	@RequestMapping("/file/delete")
+	public ModelAndView authDeleteFile(HttpServletRequest request) {
+		service.removeFile(request);
+		return new ModelAndView("redirect:/file/list.do"); 
+	}
 }
+
+
+
+
