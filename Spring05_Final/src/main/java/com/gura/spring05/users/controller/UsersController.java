@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -191,6 +192,41 @@ public class UsersController {
 		return mView;
 	}
 	
+	//회원정보 수정 폼 요청처리
+	@RequestMapping("/users/updateform")
+	public ModelAndView authUpdateform(HttpServletRequest request,ModelAndView mView) {
+		//세션 영역에서 로그인된 id를 읽어와서 
+		String id=(String)request.getSession().getAttribute("id");
+		//서비스 메소드를 호출해서 ModelAndView 객체에 회원정보가 담기게 하고
+		service.showInfo(id, mView);
+		//view page를 설정한다음
+		mView.setViewName("users/updateform");
+		return mView;//리턴해준다
+	}
+	
+	//회원정보 수정 요청처리
+	@RequestMapping("users/update")
+	public ModelAndView authupdate(@ModelAttribute UsersDto dto,HttpServletRequest request) {
+		//서비스를 이용해서 수정 반영하고 
+		service.updateUser(dto);
+		//개인정보 보기로 다시 리다이렉트이동을 시켜준다
+		return new ModelAndView("redirect:info.do");
+	}
+	
+	//회원탈퇴 요청처리
+	@RequestMapping("users/delete")
+	public ModelAndView authDelete(HttpServletRequest request,ModelAndView mView) {
+		HttpSession session=request.getSession();
+		String id= (String)session.getAttribute("id");
+		//서비스를 이용해서 해당 회원 정보삭제
+		service.deleteUser(id);
+		//로그아웃처리
+		session.invalidate();
+		
+		mView.addObject("id", id);
+		mView.setViewName("users/delete");
+		return mView;
+	}
 }
 
 

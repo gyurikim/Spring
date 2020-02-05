@@ -10,4 +10,6 @@ public interface UsersDao {
 	public String getProfile(String id);
 	public void updateProfile(UsersDto dto);
 	public void updatePwd(UsersDto dto);
+	public void delete(String id);
+	public void updateUser(UsersDto dto);
 }
