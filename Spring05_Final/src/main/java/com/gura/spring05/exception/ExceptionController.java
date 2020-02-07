@@ -20,7 +20,7 @@ public class ExceptionController {
 	public ModelAndView forbidden() {
 		
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("msg","남의파일 지우면 혼난다~");
+		mView.addObject("msg","니꺼아니면 건들지마!!!");
 		mView.setViewName("error/forbidden");
 		return mView;
 	}

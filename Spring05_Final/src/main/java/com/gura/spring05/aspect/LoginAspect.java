@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Aspect
 @Component
 public class LoginAspect {
+	
 	@Around("execution(org.springframework.web.servlet.ModelAndView auth*(..))")
 	public Object loginCheck(ProceedingJoinPoint joinPoint) throws Throwable {
 		//aop 가 적용된 메소드에 전달된 값을 Object[] 로 얻어오기
@@ -41,7 +42,7 @@ public class LoginAspect {
 			// 리턴되는 값을 리턴해 주기 
 			return obj;
 		}
-		//원래 가려던 url 정보 읽어오기 
+		//월래 가려던 url 정보 읽어오기 
 		String url=request.getRequestURI();
 		//GET 방식 전송 파라미터를 query string 으로 얻어오기
 		String query=request.getQueryString();
@@ -55,9 +56,10 @@ public class LoginAspect {
 		//ModelAndView 객체를 생성해서 	
 		ModelAndView mView=new ModelAndView();
 		//로그인 폼으로 리다일렉트 시키도록 view page 설정
-		mView.setViewName("redirect:/users/loginform.do?url="+encodedUrl);
+		mView.setViewName
+		("redirect:/users/loginform.do?url="+encodedUrl);
 		
 		//여기서 생성한 객체를 리턴해 준다. 
-		return mView;
+		return mView;		
 	}
 }
