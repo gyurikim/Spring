@@ -231,5 +231,12 @@ public class CafeServiceImpl implements CafeService{
 		//댓글 정보를 DB 에 저장한다.
 		cafeCommentDao.insert(dto);		
 	}
+
+	@Override
+	public void getCommCount(ModelAndView mView, CafeCommentDto dto) {
+		cafeCommentDao.commentCount(dto.getRef_group());
+		
+		
+	}
 	
 }

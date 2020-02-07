@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gura.spring05.cafe.dto.CafeCommentDto;
 import com.gura.spring05.cafe.dto.CafeDto;
 import com.gura.spring05.cafe.service.CafeService;
 import com.gura.spring05.member.dto.MemberDto;
@@ -21,10 +22,10 @@ public class CafeController {
 	private CafeService service;
 	
 	@RequestMapping("/cafe/list")
-	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
+	public ModelAndView list(ModelAndView mView, HttpServletRequest request,CafeCommentDto dto) {
 		//파일목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
 		service.list(request);
-		
+		service.getCommCount(mView, dto);
 		mView.setViewName("cafe/list");
 		return mView;
 	}

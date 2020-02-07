@@ -42,5 +42,11 @@ public class CafeCommentDaoImpl implements CafeCommentDao {
 	public void update(CafeCommentDto dto) {
 		session.update("cafeComment.update",dto);
 	}
+
+	@Override
+	public void commentCount(int num) {
+		session.selectOne("cafeComment.commSelect",num);
+		
+	}
 	
 }	

@@ -10,4 +10,5 @@ public interface CafeCommentDao {
 	public void insert(CafeCommentDto dto);
 	public int getSequence();
 	public void update(CafeCommentDto dto);
+	public void commentCount(int num);
 }
