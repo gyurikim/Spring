@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -91,7 +92,13 @@ public class CafeController {
 			service.getContent(mView, dto.getNum());
 			mView.setViewName("cafe/detail");
 			return mView;		   	
-
+		}
+		
+		//댓굴 저장 요청처리
+		@RequestMapping(value="/cafe/comment_insert", method=RequestMethod.POST)
+		public ModelAndView authCommentInsert(HttpServletRequest request,@RequestParam int ref_group) {
+			service.saveComment(request);
+			return new ModelAndView("redirect:/cafe/detail.do?num="+ref_group);
 		}
 		
 		
