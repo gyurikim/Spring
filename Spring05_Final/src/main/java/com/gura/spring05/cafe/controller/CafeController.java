@@ -87,16 +87,6 @@ public class CafeController {
 			
 		}
 		
-		@RequestMapping("/cafe/commupdate")
-		public ModelAndView authcommupdate(@ModelAttribute ("dto") CafeDto dto,ModelAndView mView,HttpServletRequest request) {
-			
-			//회원정보가 수정 되도록 서비스의 메소드 호출
-			service.updateComment(dto, request);
-			service.getContent(mView, dto.getNum());
-			mView.setViewName("cafe/detail");
-			return mView;		   	
-		}
-		
 		//댓굴 저장 요청처리
 		@RequestMapping(value="/cafe/comment_insert", method=RequestMethod.POST)
 		public ModelAndView authCommentInsert(HttpServletRequest request,@RequestParam int ref_group) {
@@ -113,6 +103,17 @@ public class CafeController {
 			Map<String,Object> map=new HashMap<>();
 			map.put("isSuccess",true);
 			return map;//{"isSuccess:true"}형식의 json문자열이 응답된다
+		}
+		
+		//댓글 수정 요청처리
+		@ResponseBody	//ajax요청을 할때 붙여주어야하는 어노테이션
+		@RequestMapping("/cafe/comment_update")
+		public Map<String,Object> authCommentUpdate(HttpServletRequest request,@ModelAttribute CafeCommentDto dto){
+			service.updateComment(dto);
+			
+			Map<String, Object> map= new HashMap<>();
+			map.put("isSuccess", true);
+			return map;
 		}
 		
 		

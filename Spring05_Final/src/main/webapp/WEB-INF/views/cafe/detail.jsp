@@ -203,7 +203,7 @@
 								</form>	
 								<!-- 로그인한 아이디와 댓글의 작성자와 같으면 수정폼 출력 -->				
 								<c:if test="${id eq tmp.writer }">
-									<form class="comment-update-form" action="comment_update.do">
+									<form class="comment-update-form" action="comment_update.do" method="post">
 										<input type="hidden" name="num" value="${tmp.num }" />
 										<textarea name="content">${tmp.content }</textarea>
 										<button type="submit">수정</button>
@@ -246,7 +246,7 @@
 		// "private/comment_update.do"
 		var url=$(this).attr("action");
 		//폼에 작성된 내용을 query 문자열로 읽어온다.
-		// num=댓글번호&content=댓글내용
+		// num=댓글번호&content=댓글내용을 읽어와서
 		var data=$(this).serialize();
 		//이벤트가 일어난 폼을 선택해서 변수에 담아 놓는다.
 		var $this=$(this);

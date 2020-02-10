@@ -139,15 +139,6 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 	@Override
-	public void updateComment(CafeDto dto,HttpServletRequest request) {
-//		int num=(int)request.getSession().getAttribute("num");
-//		String comm=(String)request.getSession().getAttribute("comm");
-//		dto.setNum(num);
-//		dto.setComm(comm);
-		cafeDao.commUpdate(dto);
-		
-	}
-	@Override
 	public void getDetail(HttpServletRequest request) {
 		//파라미터로 전달되는 글번호
 		int num=Integer.parseInt(request.getParameter("num"));
@@ -235,7 +226,11 @@ public class CafeServiceImpl implements CafeService{
 	@Override
 	public void deleteComment(int num) {
 		cafeCommentDao.delete(num);
-		
+	}
+
+	@Override
+	public void updateComment(CafeCommentDto dto) {
+		cafeCommentDao.update(dto);
 	}
 
 	
