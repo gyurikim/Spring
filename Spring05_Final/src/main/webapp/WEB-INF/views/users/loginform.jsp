@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +66,7 @@
 			placeholder="비밀번호" value="${savedPwd }">
 		<div class="checkbox">
 			<label>
-				<input type="checkbox" name="isSave" value="yes"/>아이디, 비밀번호 저장
+				<input type="checkbox" name="isSave" <c:if test="${not empty savedId }">checked</c:if> />아이디, 비밀번호 저장
 			</label>
 		</div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>

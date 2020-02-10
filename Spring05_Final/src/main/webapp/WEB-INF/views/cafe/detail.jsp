@@ -77,14 +77,10 @@
 	
 
 	<h3>카페 글 상세 보기</h3>
-	<c:choose>
-		<c:when test="${not empty keyword }">
-			<p>검색어 <strong>${keyword }</strong> 로 검색된 <strong>${totalRow }</strong>개의 글이 있습니다</p>
-		</c:when>
-		<c:otherwise>
-			<p><strong>${totalRow }</strong>개의 글이 있습니다</p>
-		</c:otherwise>
-	</c:choose>
+		<c:if test="${not empty keyword }">
+		<p> <strong>${keyword }</strong> 검색어로 검색된
+		결과 자세히 보기 입니다.</p>
+	</c:if>
 	
 	<table class="table table-bordered">
 		<colgroup>
@@ -246,7 +242,7 @@
 		// "private/comment_update.do"
 		var url=$(this).attr("action");
 		//폼에 작성된 내용을 query 문자열로 읽어온다.
-		// num=댓글번호&content=댓글내용을 읽어와서
+		// serialize()함수는 num=댓글번호&content=댓글내용을 읽어와서
 		var data=$(this).serialize();
 		//이벤트가 일어난 폼을 선택해서 변수에 담아 놓는다.
 		var $this=$(this);
@@ -267,7 +263,7 @@
 			}
 		});
 		//폼 제출 막기 
-		return false;
+		return false;//폼을 막는 이유는 : 폼 제출이 일어나면 댓글 수정이 일어나고 페이지 화면을 새로고침을 하는게 원리이지만, 페이지 변화없이 수정된 댓글이 보이게 하기위해서 폼제출을 막는다
 	});
 	
 	//댓글 삭제를 눌렀을때 호출되는 함수
@@ -288,7 +284,7 @@
 			});
 		}
 	}
-	
+<%-- 
 	//폼에 submit 이벤트가 일어 났을때 실행할 함수 등록 
 	$(".comments form").on("submit", function(){
 		//로그인 여부
@@ -299,8 +295,9 @@
 			return false;//폼 전송 막기 
 		}
 	});
+--%>
 	//폼에 focus 이벤트가 일어 났을때 실행할 함수 등록 
-	$(".comments form textarea").on("click", function(){
+	$(".comments form").on("click", function(){
 		//로그인 여부
 		var isLogin= ${not empty id};
 		if(isLogin==false){
