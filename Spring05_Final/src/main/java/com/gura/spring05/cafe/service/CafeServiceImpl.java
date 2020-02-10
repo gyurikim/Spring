@@ -233,10 +233,11 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 	@Override
-	public void getCommCount(ModelAndView mView, CafeCommentDto dto) {
-		cafeCommentDao.commentCount(dto.getRef_group());
-		
+	public void deleteComment(int num) {
+		cafeCommentDao.delete(num);
 		
 	}
+
+	
 	
 }

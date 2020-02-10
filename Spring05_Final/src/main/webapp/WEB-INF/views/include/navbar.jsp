@@ -44,7 +44,7 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-					<p class="navbar-text pull-right">
+					<p class="navbar-text pull-right" style="margin-top: 0; margin-bottom: 0;">
 						<img src="${pageContext.request.contextPath }${profile}" alt="" style="width:50px; height:50px; border-radius:50%;" />
 						<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.do">${id }</a></strong>
 						<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a> 

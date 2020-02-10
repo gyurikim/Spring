@@ -226,9 +226,7 @@
 					<input type="hidden" name="ref_group" value="${dto.num}" />
 					<!-- 댓글의 대상자는 원글의 작성자 -->
 					<input type="hidden" name="target_id" value="${dto.writer}" />
-					<textarea name="content">
-						<c:if test="${empty id }">로그인을 먼저 해주세요</c:if>
-					</textarea>
+					<textarea name="content"><c:if test="${empty id }">로그인을 먼저 해주세요</c:if></textarea>
 					<button type="submit">등록</button>
 				</form>
 			</div>
@@ -238,9 +236,9 @@
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
 		$(this)
-		.parent().parent().parent()
-		.find(".comment-update-form")
-		.slideToggle(200);
+		.parent().parent().parent()//3단계의 부모요소를 올라가서
+		.find(".comment-update-form")//".comment-update-form"를 찾아서
+		.slideToggle(200);// 접혀있는상태면 0.2초동안 슬라이드로 펼쳐주는 제이쿼리
 	});
 	
 	//댓글 수정 폼에 submit 이벤트가 일어났을때 호출되는 함수 등록
@@ -276,14 +274,15 @@
 	function deleteComment(num){
 		var isDelete=confirm("확인을 누르면 댓글이 삭제 됩니다.");
 		if(isDelete){
+			//페이지 전환없이 ajax요청을 통해서 삭제하기
 			$.ajax({
-				url:"comment_delete.do",
-				method:"post",
-				data:{"num":num},
+				url:"comment_delete.do",//	"/cafe/comment_delete.do" 요청
+				method:"post",			// post 방식으로
+				data:{"num":num},		// num 이라는 파라미터명으로 삭제할 댓글의 번호 전송
 				success:function(responseData){
 					if(responseData.isSuccess){
-						var sel="#comment"+num;
-						$(sel).text("삭제된 댓글 입니다.");
+						var sel="#comment"+num;//id가 comment(num)이라는 요소에
+						$(sel).text("삭제된 댓글 입니다.");	//텍스트 출력
 					}
 				}
 			});
@@ -293,7 +292,7 @@
 	//폼에 submit 이벤트가 일어 났을때 실행할 함수 등록 
 	$(".comments form").on("submit", function(){
 		//로그인 여부
-		var isLogin=${not empty id};
+		var isLogin= ${not empty id};
 		if(isLogin==false){
 			alert("로그인 페이지로 이동 합니다.");
 			location.href="${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
