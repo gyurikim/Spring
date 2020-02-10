@@ -77,7 +77,7 @@ public class CafeController {
 		}
 		
 		@RequestMapping("/cafe/detail")
-		public ModelAndView authdetail(HttpServletRequest request ,ModelAndView mView,@RequestParam int num) {
+		public ModelAndView detail(HttpServletRequest request ,ModelAndView mView,@RequestParam int num) {
 			
 			//UsersService객체를 이용해서 개인정보를 ModelAndView 객체에 담기도록한다
 			service.getDetail(request);
