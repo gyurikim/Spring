@@ -29,12 +29,9 @@
 		<!-- xs 영역에서는 숨겨졌다가 버튼을 누르면 나오게 할 컨텐츠를 넣을 div -->
 		<div class="collapse navbar-collapse" id="one">
 			<ul class="nav navbar-nav">
-		
 				<li <c:if test="${param.category == 'cafe' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/cafe/list.do">Cafe</a></li>
 				<li <c:if test="${param.category eq 'file' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/file/list.do">자료실</a></li>
-				<li <c:if test="${param.category eq 'ask' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/ask/list.do">상품문의</a></li>
-				
-				<li><a href="#">Shop</a></li>		
+				<li <c:if test="${param.category eq 'shop' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/shop/list.do">상품</a></li>
 			</ul>
 			<c:choose>
 				<c:when test="${empty sessionScope.id }">
