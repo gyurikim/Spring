@@ -63,7 +63,7 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
-	
+	<!-- 이 부분이 작성되지 않는다면 @Transactional 어노테이션이 작동되지 않는다 -->
 	<!-- Transaction Manager 설정 -->
 	<beans:bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource"/>
@@ -98,6 +98,10 @@
 		<!-- 0순위로 찾아가도록 하고 없으면 자동으로 views폴더 안에서 jsp페이지를 찾는다 -->
 		<beans:property name="order" value="0"/>
 	</beans:bean>
+	
+	<!-- web.xml 에서 설정된 error관련된 요청 처리 -->
+	<view-controller path="/error/404.do" view-name="error/404"/>
+	<view-controller path="/error/500.do" view-name="error/500"/>	<!--  /WEB-INF/views/error/500.jsp 페이지로 포워드 이동해서 응답하겠다 -->
 </beans:beans>
 
 
