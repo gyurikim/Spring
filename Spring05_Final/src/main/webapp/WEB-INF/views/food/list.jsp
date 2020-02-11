@@ -15,10 +15,11 @@
 	<div class="container">
 		<h1>맛집 리스트입니다</h1>
 		<ul class="nav navbar-nav">
-				<li><a href="locList.do?loc=서울">서울</a></li>
-				<li><a href="locList.do?loc=경기">경기</a></li>
-				<li><a href="locList.do?loc=부산">부산</a></li>
-				<li><a href="locList.do?loc=제주">제주</a></li>
+			<li><a href="list.do">전체</a></li>
+			<li><a href="locList.do?loc=서울">서울</a></li>
+			<li><a href="locList.do?loc=경기">경기</a></li>
+			<li><a href="locList.do?loc=부산">부산</a></li>
+			<li><a href="locList.do?loc=제주">제주</a></li>
 		</ul>
 		<table class="table table-striped table-condensed">
 			<thead>

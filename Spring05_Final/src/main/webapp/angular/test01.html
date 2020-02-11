@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test01</title>
+</head>
+<!-- body 안에서 일어나는 일은 default 컨트롤러로 처리하겟다는 의미 -->
+<!-- angularjs 로딩하기 -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+<body ng-app>
+	<div class="container">
+		<h1>ng-show & ng-hide</h1>
+		<img src="../resources/images/kim1.png" ng-show="true" alt="" />	<!-- ng-show="true" 이미지를 보여주겠다는 표현 -->
+		<img src="../resources/images/rabbit_1.png" ng-hide="true" alt="" /><br />	<!-- ng-hide="true" 이미지를 보여주겠다는 표현 -->
+		<label>
+			<!-- checkbox의 체크여부를 isChecked라는 모델명으로 관리하기 -->
+			<input type="checkbox" ng-model="isChecked"/>보이게 할지 여부
+		</label>
+		<br/>
+		<img src="../resources/images/image1.png" ng-show="isChecked"/><br />
+		<!-- input요소에 입력한 문자열을 msg라는 모델명으로 관리하기 -->
+		<input type="text" ng-model="msg" placeholder="문자열입력..." />
+		<!-- msg라는 모델안에 들어있는 문자열을 출력하기 -->
+		<p>{{msg}}</p>
+		<p ng-bind="msg"></p>
+	</div>
+	<script>
+	/*
+		document.querySelector("input").addEventListener("input",function(){
+			var msg=document.querySelector("input").value;
+			document.querySelector("p").innerText=msg;
+		});
+	*/
+	</script>
+</body>
+</html>
