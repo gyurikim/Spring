@@ -32,6 +32,7 @@
 				<li <c:if test="${param.category == 'cafe' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/cafe/list.do">Cafe</a></li>
 				<li <c:if test="${param.category eq 'file' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/file/list.do">자료실</a></li>
 				<li <c:if test="${param.category eq 'shop' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/shop/list.do">상품</a></li>
+				<li <c:if test="${param.category eq 'food' }">class="active"</c:if>><a href="${pageContext.request.contextPath }/food/list.do">맛집</a></li>
 			</ul>
 			<c:choose>
 				<c:when test="${empty sessionScope.id }">

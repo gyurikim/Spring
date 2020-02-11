@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="food">
+	<select id="getList" resultType="foodDto">
+		select num,menu,loc		<!-- 작성한 칼럼명과 Dto의 필드명이 일치해야 Dto에 넣을수있다 -->
+		from food
+		order by num desc
+	</select>
+	
+	<insert id="insert" parameterType="foodDto">
+		insert into food
+		(num,menu,loc)			<!-- 이전에 사용했던 ? 대신에 마이바티스에서는 #{}은 dto.getName()을 알아서 리턴해줘서 name 자리에  넣어준다 -->
+		values(food_seq.nextval,#{menu},#{loc})
+	</insert>	
+	
+	<delete id="delete" parameterType="int">
+		delete from food
+		where num=#{num}
+	</delete>
+	
+	<select id="getData" parameterType="int" resultType="foodDto">
+		select num,menu,loc
+		from food
+		where num=#{num}
+	</select>
+	
+	
+	<update id="update" parameterType="foodDto">
+		update food
+		set menu=#{menu},loc=#{loc}
+		where num=#{num}
+	</update>
+	
+	<select id="locGetList" parameterType="String" resultType="foodDto">
+		select num,menu,loc
+		from food
+		where loc=#{loc}
+		order by num desc
+	</select>
+</mapper>
