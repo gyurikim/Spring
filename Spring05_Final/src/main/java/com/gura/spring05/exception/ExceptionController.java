@@ -25,10 +25,17 @@ public class ExceptionController {
 		return mView;
 	}
 	
+	@ExceptionHandler(NoDeliveryException.class)
+	public ModelAndView noDelivery(NoDeliveryException nde) {
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("exception",nde);
+		mView.setViewName("error/data_access");
+		return mView;
+	}
 	/*
-	 * @Repository 어노테이션이 작성된 Dao에서 DB관련 Exception이 발생하면 Spring 프레임 워크가 DataAccessException type의 예외를 발생시킨다
-	 * 예외 객체는 메소드의 인자로 전달되고 해당 예외 객체는 getMessage()라는 getter 메소드가 존재한다
-	 * 해당 메소드를 호출하면 예외 메세지를 리턴해준다	${exception.getMessage()} > ${exception.message()}
+	 * @Repository 어노테이션이 작성된 Dao에서! DB관련 Exception이 발생하면 Spring 프레임 워크가 DataAccessException type의 예외를 발생시킨다
+	 * 예외 객체는 메소드의 인자로 전달되고 해당 예외 객체는 getMessage()라는 getter 메소드가 내장되어 존재한다!
+	 * 해당 메소드를 호출하면 예외 메세지를 리턴해준다	${exception.getMessage()} > ${exception.message}
 	 */
 	@ExceptionHandler(DataAccessException.class)
 	public ModelAndView dataAccess(DataAccessException dae) {

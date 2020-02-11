@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.gura.spring05.shop.dto.ShopDto;
 
+//@Component 어노테이션을 붙여도 상관없지만 트랜잭션어노테이션을 붙이기 위해서 @Repository 어노테이션을 붙여 사용한다
 @Repository
 public class ShopDaoImpl implements ShopDao{
 	//의존객체 주입
