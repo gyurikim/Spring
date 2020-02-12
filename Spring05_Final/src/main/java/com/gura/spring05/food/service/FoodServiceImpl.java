@@ -45,9 +45,8 @@ public class FoodServiceImpl implements FoodService{
 	}
 
 	@Override
-	public void getLocList(ModelAndView mView,FoodDto dto,@RequestParam String loc) {
+	public void getLocList(ModelAndView mView, String loc) {
 		List<FoodDto> list=dao.locGetList(loc);
-		mView.addObject("dto", dto);
 		mView.addObject("list", list);
 		
 	}

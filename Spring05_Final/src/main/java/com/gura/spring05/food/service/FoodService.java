@@ -10,5 +10,5 @@ public interface FoodService {
 	public void getFood(ModelAndView mView, int num);
 	public void updateFood(ModelAndView mView,FoodDto dto);
 	public void deleteFood(int num);
-	public void getLocList(ModelAndView mView,FoodDto dto, String loc);
+	public void getLocList(ModelAndView mView, String loc);
 }

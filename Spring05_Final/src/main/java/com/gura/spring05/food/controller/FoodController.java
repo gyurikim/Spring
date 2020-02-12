@@ -60,8 +60,8 @@ public class FoodController {
 	}
 	
 	@RequestMapping("/food/locList")
-	public ModelAndView locList(ModelAndView mView,@ModelAttribute FoodDto dto,@RequestParam String loc) {
-		service.getLocList(mView,dto, loc);
+	public ModelAndView locList(ModelAndView mView, String loc) {
+		service.getLocList(mView, loc);
 		mView.setViewName("food/locList");
 		return mView;
 	}
