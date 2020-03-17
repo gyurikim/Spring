@@ -48,5 +48,10 @@ public class FoodDaoImpl implements FoodDao{
 		List<FoodDto> list=session.selectList("food.locGetList",loc);
 		return list;
 	}
+
+	@Override
+	public int getCount(FoodDto dto) {
+		return session.selectOne("food.getCount",dto);
+	}
 	
 }

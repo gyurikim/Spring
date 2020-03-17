@@ -4,14 +4,18 @@ public class FoodDto {
 	private int num;
 	private String menu;
 	private String loc;
+	private int startRowNum;
+	private int endRowNum;
 	
 	public FoodDto() {}
 
-	public FoodDto(int num, String menu, String loc) {
+	public FoodDto(int num, String menu, String loc, int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.menu = menu;
 		this.loc = loc;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public int getNum() {
@@ -37,4 +41,25 @@ public class FoodDto {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
+	
+
+
+	
 }

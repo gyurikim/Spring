@@ -1,5 +1,8 @@
 package com.gura.spring05.food.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +21,8 @@ public class FoodController {
 	private FoodService service;
 	
 	@RequestMapping("/food/list")
-	public ModelAndView list(ModelAndView mView) {
-		service.getList(mView);
+	public ModelAndView list(ModelAndView mView,HttpServletRequest request) {
+		service.getList(mView, request);
 		mView.setViewName("food/list");
 		return mView;
 	}
