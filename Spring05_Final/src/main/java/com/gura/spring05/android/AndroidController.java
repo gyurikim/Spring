@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -75,12 +76,19 @@ public class AndroidController {
 		memberDao.delete(num);
 		return "{\"isSuccess\":true}"; 
 	}	
-	
+	/*
+	 * name=김구라&addr=노량진
+	 * 
+	 * Member dto=new MemberDto();
+	 * dto.setName(name);
+	 * dto.setAddr(addr);
+	 * > MemberDto의 필드명과 파라미터명이 같으면 알아서 dto에 값을 담아준다
+	 */
 	@ResponseBody
 	@RequestMapping("/android/member/insert")
-	public String memberInsert() {
+	public String memberInsert(@ModelAttribute MemberDto dto) {
 		memberDao.insert(dto);
-		return "{\"isSuccess\":true}"; 
+		return "{\"isSuccess\":true}"; //리턴값을 앱에서 직접적으로 사용하지는 않지만 뭐라도 응답해주어야하니깐 불리언값을 넣어준다
 	}	
 }
 
